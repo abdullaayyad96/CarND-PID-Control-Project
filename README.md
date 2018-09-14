@@ -37,6 +37,18 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 
+## Reflection
+
+Two seperate PID controllers were implemented in this project. The first to control the cross track error (keep the car at the center of the road) by manipulating the steering angle and the second is maintaining the speed of the vehicle by controling the throttle.
+
+#### Describe the effect each of the P, I, D components had in your implementation.
+
+* P term: The proportional term is the most intuitive term in the PID controller. It directly scales the error value so that the control variable takes action to minimize this error. For example, the steering angle will be a scaled value of the cross track error in the first P controller and the throttle will be proportional to the speed error in the second controller of only a proportional term was used. While this term is essential in minimizing the errors, relying only the the p term can cause overshoots which are represented by wobbling for cross track distance control and cycle of accelerating and breaking for speed control.
+
+* D term: The derivative term is essential for smoothening the response of the system and minimize overshoot problems associated with proportional control. By taking action to counter the rate at which the error value changes, very drastic and fast response of the system is countered even if this change was in the direction to minimize the error. This leads to a smoother response with minimal overshoot once parameters are tuned appropriately. In the case of this project, the D term proved effective in solving the wobbling in cross track distance control and almost entirely eliminate the cycles of accelerating and breaking for speed control.
+
+* I term: 
+
 ## Editor Settings
 
 We've purposefully kept editor configuration files out of this repo in order to
